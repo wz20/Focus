@@ -1,0 +1,34 @@
+name: Build Focus macOS DMG
+on:
+  workflow_dispatch:
+  push:
+    branches: ['focus-desktop-build/**']
+permissions:
+  contents: read
+jobs:
+  native-dmg:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Run domain, storage, and configuration tests
+        run: node --test tests/*.test.mjs
+      - name: Build native DMG and run native renderer/persistence smoke test
+        run: bash scripts/build-mac.sh
+      - name: Upload verified image, checksum, and native screenshot
+        uses: actions/upload-artifact@v7
+        with:
+          name: Focus-macOS-native
+          path: |
+            dist/Focus-*.dmg
+            dist/Focus-*.dmg.sha256
+            dist/native-smoke-*.png
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0

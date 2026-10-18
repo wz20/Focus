@@ -1,0 +1,6 @@
+Focus 0.1.4：四象限、时间轴与工作月历。
+下载：https://github.com/wz20/Focus/releases
+打开 DMG，将 Focus.app 拖入 Applications。
+覆盖更新保留 ~/Library/Application Support/Focus/ 中的数据，建议更新前导出 JSON 备份。
+安装包使用 ad-hoc 签名，尚未经过 Apple Developer ID 签名和公证。
+使用说明与验证范围见 README.md；源码采用 MIT 许可证。

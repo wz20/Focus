@@ -1,0 +1,25 @@
+"""A delayed first-frame autofocus must not steal focus after a user starts typing."""
+from playwright.sync_api import sync_playwright,expect
+from browser_harness import mount
+with sync_playwright() as p:
+ b=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
+ page=b.new_page(viewport={'width':1440,'height':1000})
+ mount(page)
+ page.evaluate('''()=>{window.__originalRAF=window.requestAnimationFrame;window.__heldRaf=[];window.requestAnimationFrame=fn=>{window.__heldRaf.push(fn);return window.__heldRaf.length;}}''')
+ page.get_by_role('button',name='新增任务',exact=True).click()
+ page.get_by_label('备注',exact=True).focus()
+ page.evaluate('window.__heldRaf.splice(0).forEach(fn=>fn(performance.now()))')
+ expect(page.get_by_label('备注',exact=True)).to_be_focused()
+ page.keyboard.insert_text('输入应当保留在备注')
+ expect(page.get_by_label('备注',exact=True)).to_have_value('输入应当保留在备注')
+ expect(page.get_by_label('任务名称',exact=True)).to_have_value('')
+ print('PASS queued autofocus never redirects notes into the title')
+ page.get_by_role('button',name='取消',exact=True).click()
+ page.get_by_role('button',name='放弃修改',exact=True).click()
+ page.get_by_role('button',name='新增任务',exact=True).click()
+ page.get_by_role('radio',name='重要 · 紧急',exact=True).click()
+ page.evaluate('window.__heldRaf.splice(0).forEach(fn=>fn(performance.now()))')
+ expect(page.get_by_role('radio',name='重要 · 紧急',exact=True)).to_be_focused()
+ print('PASS queued autofocus preserves immediate quadrant interaction')
+ b.close()
+print('2 modal focus checks passed')

@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import { TaskStore } from '../src/domain/store.mjs';
+const make=()=>new TaskStore({version:1,tasks:[]});
+test('create publishes one change and persists a valid snapshot',()=>{const s=make();let calls=0;s.subscribe(()=>calls++);const t=s.create({title:'first'});assert.equal(s.tasks[0].id,t.id);assert.equal(calls,1);});
+test('undo redo restore exact task snapshots',()=>{const s=make();const t=s.create({title:'a'});s.advance(t.id);assert.equal(s.get(t.id).status,'ing');s.undo();assert.equal(s.get(t.id).status,'todo');s.redo();assert.equal(s.get(t.id).status,'ing');});
+test('new action clears redo history',()=>{const s=make();s.create({title:'a'});s.undo();s.create({title:'b'});assert.equal(s.redo(),false);});
+test('moving quadrant preserves task and state',()=>{const s=make();const t=s.create({title:'a'});s.move(t.id,'q3');assert.equal(s.get(t.id).important,false);assert.equal(s.get(t.id).urgent,true);});
+test('done stays visible until next explicit advance, restore retains done',()=>{const s=make();const t=s.create({title:'a'});s.setStatus(t.id,'done');assert.equal(s.active.length,1);s.advance(t.id);assert.equal(s.active.length,0);s.restore(t.id);assert.equal(s.get(t.id).status,'done');});
+test('missing task cannot modify collection',()=>{const s=make();assert.throws(()=>s.update('not-found',{title:'bad'}),/不存在/);assert.equal(s.tasks.length,0);});
+test('import replacement is reversible and validates before changing state',()=>{const s=make();s.create({title:'old'});assert.throws(()=>s.replace({version:3,tasks:[]}));assert.equal(s.tasks.length,1);s.replace({version:1,tasks:[]});s.undo();assert.equal(s.tasks[0].title,'old');});
+test('deleting supports undo; clearing demos preserves real tasks',()=>{const s=make();s.create({title:'real'});const d=s.create({title:'demo',isDemo:true});s.clearDemos();assert.equal(s.tasks.length,1);s.undo();assert.equal(s.tasks.length,2);s.remove(d.id);assert.equal(s.tasks[0].title,'real');});

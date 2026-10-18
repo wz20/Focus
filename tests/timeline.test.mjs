@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import * as time from '../src/domain/time.mjs';
+test('week starts on local Monday and has seven columns',()=>{const r=time.timelineRange(new Date(2026,8,23),'week');assert.equal(r.start.getDay(),1);assert.equal(r.columns.length,7);assert.equal(r.columns[0].start.getDate(),21);assert.equal(r.end.getDate(),28);});
+test('day has 24 exact hourly columns',()=>{const r=time.timelineRange(new Date(2026,8,21),'day');assert.equal(r.columns.length,24);assert.equal(r.start.getHours(),0);});
+test('month shows actual number of days',()=>{const r=time.timelineRange(new Date(2026,1,21),'month');assert.equal(r.columns.length,28);});
+test('bars clip at viewport boundaries and preserve real span',()=>{const r=time.timelineRange(new Date(2026,8,21),'week');const p=time.barPosition(new Date(2026,8,20),new Date(2026,8,23),r);assert.equal(p.left,0);assert.ok(p.width>0);assert.equal(p.clippedLeft,true);});
+test('unscheduled or disjoint intervals have no invented bar',()=>{const r=time.timelineRange(new Date(2026,8,21),'week');assert.equal(time.barPosition(null,null,r),null);assert.equal(time.barPosition(new Date(2025,0,1),new Date(2025,0,2),r),null);});

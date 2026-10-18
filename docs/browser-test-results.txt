@@ -1,0 +1,35 @@
+PASS empty workspace retains both axes and zero fake tasks
+PASS explicit demo insertion shows sparse real interactive cards
+PASS blank task validation prevents save
+PASS invalid date order prevents save
+PASS new task saves title, notes, classification, dates, estimate
+PASS task status indicator changes todo to ing and detail opens
+PASS editing task updates same id and drawer
+PASS done does not auto archive and exposes archive action
+PASS explicit archive removes active task and shows archive record
+PASS restore returns task without falsely reopening done
+PASS clicking a done task status a second time archives it
+PASS keyboard undo restores the archived task
+PASS live search filters without changing stored tasks
+PASS dragging a card across axes changes its quadrant
+PASS HTML-looking task content remains escaped text
+PASS closing an edited form does not silently discard changes
+PASS saved snapshot rehydrates into a fresh renderer
+PASS dense quadrant groups cards and virtual list scrolls to hidden tasks
+PASS dense drawer filters individual task statuses
+PASS timeline reflects ing states and retains unscheduled tasks
+PASS timeline bar dragging moves a task without altering planned duration
+PASS resizing timeline endpoint changes only that endpoint
+PASS day, week and month timeline scales have correct calendar columns
+PASS unscheduled task can be scheduled and leaves pending tray
+PASS 1280x800 and 900x700 layouts fit without page overflow
+PASS narrow fallback preserves quadrants and readable task access
+PASS no renderer JavaScript exceptions through all flows
+
+27 browser checks passed.
+
+PASS archive ignores unrelated active-task status filter
+PASS timeline displays and applies inherited status filter
+PASS closing handshake waits for all pending renderer saves
+
+Visual/renderer verification passed. Per-screen contrast minima: {'home': 4.7, 'detail': 6.43, 'done': 6.42, 'archive': 6.78, 'new-task': 6.78, 'timeline': 4.92, 'dense': 4.89, 'mobile': 4.89}

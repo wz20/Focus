@@ -1,0 +1,4 @@
+
+此脚本必须在 macOS 上执行；当前环境无法运行 codesign / hdiutil。
+未生成 DMG。
+Exit status: 2

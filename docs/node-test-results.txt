@@ -1,0 +1,314 @@
+
+> focus-quadrants@0.1.1 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: first launch creates its private data directory before configuring Electron
+ok 1 - first launch creates its private data directory before configuring Electron
+  ---
+  duration_ms: 8.320345
+  type: 'test'
+  ...
+# Subtest: renderer receives only a small whitelisted bridge, not raw Electron or Node access
+ok 2 - renderer receives only a small whitelisted bridge, not raw Electron or Node access
+  ---
+  duration_ms: 3.920085
+  type: 'test'
+  ...
+# Subtest: a task starts as todo with no schedule or archive
+ok 3 - a task starts as todo with no schedule or archive
+  ---
+  duration_ms: 3.704165
+  type: 'test'
+  ...
+# Subtest: empty title and excessive title rejected
+ok 4 - empty title and excessive title rejected
+  ---
+  duration_ms: 0.596166
+  type: 'test'
+  ...
+# Subtest: schedule requires both endpoints and increasing valid timestamps
+ok 5 - schedule requires both endpoints and increasing valid timestamps
+  ---
+  duration_ms: 0.53222
+  type: 'test'
+  ...
+# Subtest: estimated minutes are a positive finite bounded number
+ok 6 - estimated minutes are a positive finite bounded number
+  ---
+  duration_ms: 0.45748
+  type: 'test'
+  ...
+# Subtest: all four quadrant mappings are correct
+ok 7 - all four quadrant mappings are correct
+  ---
+  duration_ms: 0.20147
+  type: 'test'
+  ...
+# Subtest: status cycle does not auto archive done
+ok 8 - status cycle does not auto archive done
+  ---
+  duration_ms: 0.326676
+  type: 'test'
+  ...
+# Subtest: archive only completed tasks, and changing archived status needs restore
+ok 9 - archive only completed tasks, and changing archived status needs restore
+  ---
+  duration_ms: 0.388347
+  type: 'test'
+  ...
+# Subtest: restore keeps done; explicitly reopening clears completion timestamp
+ok 10 - restore keeps done; explicitly reopening clears completion timestamp
+  ---
+  duration_ms: 0.200648
+  type: 'test'
+  ...
+# Subtest: invalid status rejected rather than guessed
+ok 11 - invalid status rejected rather than guessed
+  ---
+  duration_ms: 0.724612
+  type: 'test'
+  ...
+# Subtest: normalize snapshots rejects duplicate ids and malformed schema
+ok 12 - normalize snapshots rejects duplicate ids and malformed schema
+  ---
+  duration_ms: 1.349836
+  type: 'test'
+  ...
+# Subtest: validated snapshot is deeply copied and strips unknown fields
+ok 13 - validated snapshot is deeply copied and strips unknown fields
+  ---
+  duration_ms: 1.255045
+  type: 'test'
+  ...
+# Subtest: filters ignore archived by default and search handles exact literal characters
+ok 14 - filters ignore archived by default and search handles exact literal characters
+  ---
+  duration_ms: 1.057331
+  type: 'test'
+  ...
+# Subtest: time overlaps use half-open intervals and exclude done and archived
+ok 15 - time overlaps use half-open intervals and exclude done and archived
+  ---
+  duration_ms: 0.180419
+  type: 'test'
+  ...
+# Subtest: date shifts preserve window length and clamp minimum resizes
+ok 16 - date shifts preserve window length and clamp minimum resizes
+  ---
+  duration_ms: 0.128151
+  type: 'test'
+  ...
+# Subtest: HTML-looking task text stays ordinary text in the data model
+ok 17 - HTML-looking task text stays ordinary text in the data model
+  ---
+  duration_ms: 0.082223
+  type: 'test'
+  ...
+# Subtest: task ids are valid unique version 4 UUIDs
+ok 18 - task ids are valid unique version 4 UUIDs
+  ---
+  duration_ms: 2.892078
+  type: 'test'
+  ...
+# Subtest: sub-minute estimated durations cannot normalize to zero
+ok 19 - sub-minute estimated durations cannot normalize to zero
+  ---
+  duration_ms: 0.144074
+  type: 'test'
+  ...
+# Subtest: native macOS builder rejects unsupported host instead of claiming a DMG
+ok 20 - native macOS builder rejects unsupported host instead of claiming a DMG
+  ---
+  duration_ms: 8.645803
+  type: 'test'
+  ...
+# Subtest: Mac builder pins runtime checksums, validates signatures and verifies disk image
+ok 21 - Mac builder pins runtime checksums, validates signatures and verifies disk image
+  ---
+  duration_ms: 3.917191
+  type: 'test'
+  ...
+# Subtest: packaging has a clickable entry and no bundled font resources
+ok 22 - packaging has a clickable entry and no bundled font resources
+  ---
+  duration_ms: 1.072033
+  type: 'test'
+  ...
+# Subtest: q2: richer fill retains legibility, without dark mode
+ok 23 - q2: richer fill retains legibility, without dark mode
+  ---
+  duration_ms: 1.474491
+  type: 'test'
+  ...
+# Subtest: q1: richer fill retains legibility, without dark mode
+ok 24 - q1: richer fill retains legibility, without dark mode
+  ---
+  duration_ms: 0.431632
+  type: 'test'
+  ...
+# Subtest: q4: richer fill retains legibility, without dark mode
+ok 25 - q4: richer fill retains legibility, without dark mode
+  ---
+  duration_ms: 0.351802
+  type: 'test'
+  ...
+# Subtest: q3: richer fill retains legibility, without dark mode
+ok 26 - q3: richer fill retains legibility, without dark mode
+  ---
+  duration_ms: 0.226657
+  type: 'test'
+  ...
+# Subtest: canvas stays white and primary button white text remains distinct
+ok 27 - canvas stays white and primary button white text remains distinct
+  ---
+  duration_ms: 0.271443
+  type: 'test'
+  ...
+# Subtest: completed cards and bars do not fade their readable labels
+ok 28 - completed cards and bars do not fade their readable labels
+  ---
+  duration_ms: 0.450039
+  type: 'test'
+  ...
+# Subtest: release metadata agrees across Electron and Mac builder
+ok 29 - release metadata agrees across Electron and Mac builder
+  ---
+  duration_ms: 0.553703
+  type: 'test'
+  ...
+# Subtest: new install creates an empty store, not fake personal tasks
+ok 30 - new install creates an empty store, not fake personal tasks
+  ---
+  duration_ms: 7.812049
+  type: 'test'
+  ...
+# Subtest: snapshot survives file roundtrip
+ok 31 - snapshot survives file roundtrip
+  ---
+  duration_ms: 7.35501
+  type: 'test'
+  ...
+# Subtest: invalid save cannot overwrite existing data
+ok 32 - invalid save cannot overwrite existing data
+  ---
+  duration_ms: 2.898147
+  type: 'test'
+  ...
+# Subtest: corrupt main file recovers valid backup with visible warning
+ok 33 - corrupt main file recovers valid backup with visible warning
+  ---
+  duration_ms: 7.763473
+  type: 'test'
+  ...
+# Subtest: unrecoverable corruption is not silently reset
+ok 34 - unrecoverable corruption is not silently reset
+  ---
+  duration_ms: 2.58455
+  type: 'test'
+  ...
+# Subtest: concurrent saves are serialized and last write wins
+ok 35 - concurrent saves are serialized and last write wins
+  ---
+  duration_ms: 46.837414
+  type: 'test'
+  ...
+# Subtest: file permissions protect data from other local users
+ok 36 - file permissions protect data from other local users
+  ---
+  duration_ms: 4.71733
+  type: 'test'
+  ...
+# Subtest: explicit backup import preserves unreadable original and opens recovered workspace
+ok 37 - explicit backup import preserves unreadable original and opens recovered workspace
+  ---
+  duration_ms: 3.949599
+  type: 'test'
+  ...
+# Subtest: create publishes one change and persists a valid snapshot
+ok 38 - create publishes one change and persists a valid snapshot
+  ---
+  duration_ms: 4.060835
+  type: 'test'
+  ...
+# Subtest: undo redo restore exact task snapshots
+ok 39 - undo redo restore exact task snapshots
+  ---
+  duration_ms: 0.450209
+  type: 'test'
+  ...
+# Subtest: new action clears redo history
+ok 40 - new action clears redo history
+  ---
+  duration_ms: 0.179857
+  type: 'test'
+  ...
+# Subtest: moving quadrant preserves task and state
+ok 41 - moving quadrant preserves task and state
+  ---
+  duration_ms: 0.399414
+  type: 'test'
+  ...
+# Subtest: done stays visible until next explicit advance, restore retains done
+ok 42 - done stays visible until next explicit advance, restore retains done
+  ---
+  duration_ms: 0.599431
+  type: 'test'
+  ...
+# Subtest: missing task cannot modify collection
+ok 43 - missing task cannot modify collection
+  ---
+  duration_ms: 0.45094
+  type: 'test'
+  ...
+# Subtest: import replacement is reversible and validates before changing state
+ok 44 - import replacement is reversible and validates before changing state
+  ---
+  duration_ms: 0.319554
+  type: 'test'
+  ...
+# Subtest: deleting supports undo; clearing demos preserves real tasks
+ok 45 - deleting supports undo; clearing demos preserves real tasks
+  ---
+  duration_ms: 0.417
+  type: 'test'
+  ...
+# Subtest: week starts on local Monday and has seven columns
+ok 46 - week starts on local Monday and has seven columns
+  ---
+  duration_ms: 1.040366
+  type: 'test'
+  ...
+# Subtest: day has 24 exact hourly columns
+ok 47 - day has 24 exact hourly columns
+  ---
+  duration_ms: 0.29571
+  type: 'test'
+  ...
+# Subtest: month shows actual number of days
+ok 48 - month shows actual number of days
+  ---
+  duration_ms: 1.920785
+  type: 'test'
+  ...
+# Subtest: bars clip at viewport boundaries and preserve real span
+ok 49 - bars clip at viewport boundaries and preserve real span
+  ---
+  duration_ms: 0.305474
+  type: 'test'
+  ...
+# Subtest: unscheduled or disjoint intervals have no invented bar
+ok 50 - unscheduled or disjoint intervals have no invented bar
+  ---
+  duration_ms: 0.271073
+  type: 'test'
+  ...
+1..50
+# tests 50
+# suites 0
+# pass 50
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 214.264847

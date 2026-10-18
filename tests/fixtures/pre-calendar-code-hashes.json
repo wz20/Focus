@@ -1,0 +1,8 @@
+{
+  "src/domain/model.mjs": "9a4db78f35cef76cda74c0e4152068bdac29ff3d28a62dc0b09eda470367cd7d",
+  "src/domain/store.mjs": "e12bb3ca5767d521ccad4ae4642bc2cd8e7e633b42339addd5f88831c50ab509",
+  "src/electron/repository.mjs": "258f84d04fe881f3633260a9be99878a9021a5841c50bf39d1e5c137bde9fe24",
+  "src/electron/main.cjs": "20a829f59a94d46908f8aed0de5d559eafca4e978dac26878901596d182b01a2",
+  "src/electron/preload.cjs": "0a84537c2ab92d97afbc121be94a775541f35a217d5d9cff99ccd05d76537c07",
+  "src/ui/modal.mjs": "15178498a202201af913a656f16bb9fa3aa99d8ff1db19908ef544207b360726"
+}
