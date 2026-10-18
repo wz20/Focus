@@ -2,6 +2,12 @@
 
 本地优先的手绘四象限、甘特图与工作月历。完整 DMG 可直接拖入 Applications，无需自行编译。
 
+## 介绍视频
+
+[![观看 Focus 产品介绍视频](preview/focus-demo-cover.png)](https://github.com/wz20/Focus/blob/main/preview/focus-demo.mp4)
+
+[▶ 观看完整介绍视频](https://github.com/wz20/Focus/blob/main/preview/focus-demo.mp4) · 约 68 秒 · 1080p
+
 ## 下载与安装
 
 从 [GitHub Releases](https://github.com/wz20/Focus/releases) 下载 macOS 安装包及 SHA-256 校验文件。Apple Silicon 芯片使用 arm64 包；其他架构的可用包以发布页为准。
